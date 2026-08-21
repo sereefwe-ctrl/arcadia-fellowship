@@ -34,21 +34,23 @@
     padding: 0 24px;
   }
   .logo-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
+    position: relative;
+    height: clamp(18px, 4.5vh, 32px);
     margin: 0 0 20px 0;
   }
   img.logo {
     display: block;
-    height: clamp(18px, 4.5vh, 32px);
+    height: 100%;
     width: auto;
     filter: brightness(0) invert(1);
   }
   img.icon {
     display: block;
-    height: clamp(100px, 22vh, 200px);
+    position: absolute;
+    right: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: clamp(80px, 16vh, 150px);
     width: auto;
   }
   p.pos {
