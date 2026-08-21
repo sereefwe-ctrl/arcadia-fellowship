@@ -170,10 +170,18 @@
   var imgAspect = 1;
   var bgImage = new Image();
   bgImage.onload = function () {
-    gl.bindTexture(gl.TEXTURE_2D, bgTexture);
-    gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
-    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, bgImage);
-    imgAspect = bgImage.naturalWidth / bgImage.naturalHeight;
+    try {
+      gl.bindTexture(gl.TEXTURE_2D, bgTexture);
+      gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
+      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, bgImage);
+      imgAspect = bgImage.naturalWidth / bgImage.naturalHeight;
+    } catch (err) {
+      console.warn("Water effect: could not load background into WebGL texture (likely a local file:// restriction, this resolves once the site is served over http/https). Falling back to a static background.", err);
+      document.body.classList.add("static-bg");
+    }
+  };
+  bgImage.onerror = function () {
+    document.body.classList.add("static-bg");
   };
   bgImage.src = "garden.jpg";
 
