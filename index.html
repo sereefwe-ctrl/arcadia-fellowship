@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Arcadia Fellowship</title>
+<title>Arcadia</title>
 <style>
   html, body {
     margin: 0;
@@ -11,23 +11,62 @@
     width: 100%;
     height: 100%;
     overflow: hidden;
-    background: #ffffff;
+    background: #fffdf9;
   }
   body {
     display: flex;
     align-items: center;
     justify-content: center;
   }
-  .mark {
-    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-    font-size: clamp(1.25rem, 4vw, 2.25rem);
-    letter-spacing: 0.15em;
-    color: #111111;
-    user-select: none;
+  .card {
+    max-width: min(34rem, 88vw);
+    max-height: 92vh;
+    padding: 0 1.5rem;
+    text-align: center;
+    font-family: Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+    color: #1a1a1a;
+  }
+  .name {
+    font-size: clamp(1.25rem, 4.5vh, 2.5rem);
+    letter-spacing: 0.14em;
+    font-weight: 400;
+    margin: 0 0 0.5em;
+  }
+  .pos {
+    font-size: clamp(0.75rem, 1.8vh, 0.95rem);
+    font-style: italic;
+    color: #6b6b6b;
+    margin: 0 0 1.1em;
+  }
+  .def {
+    font-size: clamp(0.8rem, 2vh, 1.05rem);
+    line-height: 1.6;
+    color: #3a3a3a;
+    margin: 0 0 1.6em;
+  }
+  .join {
+    display: inline-block;
+    font-family: inherit;
+    font-size: clamp(0.75rem, 1.8vh, 0.95rem);
+    letter-spacing: 0.08em;
+    text-transform: lowercase;
+    color: #1a1a1a;
+    text-decoration: none;
+    border-bottom: 1px solid #1a1a1a;
+    padding-bottom: 2px;
+    transition: opacity 0.2s ease;
+  }
+  .join:hover {
+    opacity: 0.55;
   }
 </style>
 </head>
 <body>
-  <div class="mark">&lt; arcadia &gt;</div>
+  <div class="card">
+    <p class="name">ARCADIA</p>
+    <p class="pos">noun</p>
+    <p class="def">a real or imaginary place of rural peace, rustic innocence, and simple quiet pleasure. the term comes from a mountainous region in Greece that became a symbol of an ideal, untroubled life in nature.</p>
+    <a class="join" href="#">join arcadia</a>
+  </div>
 </body>
 </html>
