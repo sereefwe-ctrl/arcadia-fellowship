@@ -46,7 +46,7 @@
       var finalText = el.textContent;
       if (reducedMotion) continue;
       el.textContent = finalText.replace(/\S/g, randChar);
-      crackle(el, finalText, 2200, 50, i * 260);
+      crackle(el, finalText, 2600, 50, i * 300);
     }
   }
 
