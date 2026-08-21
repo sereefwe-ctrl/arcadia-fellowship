@@ -23,12 +23,39 @@
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
+    position: relative;
+  }
+  canvas#water {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: block;
+    z-index: 0;
+  }
+  .scrim {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(rgba(8, 10, 4, 0.45), rgba(8, 10, 4, 0.55));
+    pointer-events: none;
+    z-index: 1;
+  }
+  body.static-bg canvas#water {
+    display: none;
+  }
+  body.static-bg {
     background-image: linear-gradient(rgba(8, 10, 4, 0.45), rgba(8, 10, 4, 0.55)), url("garden.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
   }
+  body.static-bg .scrim {
+    display: none;
+  }
   .card {
+    position: relative;
+    z-index: 2;
     max-width: min(540px, 88vw);
     max-height: 92vh;
     padding: 0 24px;
@@ -84,6 +111,8 @@
 </style>
 </head>
 <body>
+  <canvas id="water"></canvas>
+  <div class="scrim"></div>
   <div class="card">
     <div class="logo-row">
       <img class="logo" src="Arcadia1.png" alt="Arcadia">
@@ -94,5 +123,6 @@
     <p class="def">a real or imaginary place of rural peace, rustic innocence, and simple quiet pleasure. the term comes from a mountainous region in Greece that became a symbol of an ideal, untroubled life in nature.</p>
     <a class="join" href="#">learn more &raquo;</a>
   </div>
+  <script src="ripple.js"></script>
 </body>
 </html>
