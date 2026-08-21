@@ -65,19 +65,10 @@
     height: clamp(18px, 4.5vh, 32px);
     margin: 0 0 20px 0;
   }
-  .logo {
+  img.logo {
     display: block;
     height: 100%;
-    aspect-ratio: 1021 / 157;
-    background-color: #ffffff;
-    -webkit-mask-image: url("Arcadia1.png");
-    mask-image: url("Arcadia1.png");
-    -webkit-mask-repeat: no-repeat;
-    mask-repeat: no-repeat;
-    -webkit-mask-size: contain;
-    mask-size: contain;
-    -webkit-mask-position: left center;
-    mask-position: left center;
+    width: auto;
   }
   img.icon {
     display: block;
@@ -123,7 +114,7 @@
   <div class="scrim"></div>
   <div class="card">
     <div class="logo-row">
-      <div class="logo" role="img" aria-label="Arcadia"></div>
+      <img class="logo" src="Arcadia1-white.png" alt="Arcadia">
       <img class="icon" src="folder-icon.png" alt="">
     </div>
     <p class="pos" data-scramble>noun / ar&#8231;ca&#8231;dia</p>
