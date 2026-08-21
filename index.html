@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Arcadia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   html, body {
     margin: 0;
@@ -11,62 +14,64 @@
     width: 100%;
     height: 100%;
     overflow: hidden;
-    background: #fffdf9;
+    background: #ffffff;
+    color: #111111;
   }
   body {
+    font-family: "IBM Plex Mono", "Courier New", monospace;
     display: flex;
     align-items: center;
     justify-content: center;
+    box-sizing: border-box;
   }
   .card {
-    max-width: min(34rem, 88vw);
+    max-width: min(540px, 88vw);
     max-height: 92vh;
-    padding: 0 1.5rem;
-    text-align: center;
-    font-family: Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
-    color: #1a1a1a;
+    padding: 0 24px;
   }
-  .name {
-    font-size: clamp(1.25rem, 4.5vh, 2.5rem);
-    letter-spacing: 0.14em;
+  h1 {
+    font-family: "Press Start 2P", Georgia, "Times New Roman", Times, serif;
+    font-size: clamp(18px, 4.5vh, 27px);
     font-weight: 400;
-    margin: 0 0 0.5em;
+    line-height: 1.4;
+    margin: 0 0 20px 0;
   }
-  .pos {
-    font-size: clamp(0.75rem, 1.8vh, 0.95rem);
+  p.pos {
+    font-size: clamp(11px, 1.8vh, 13px);
     font-style: italic;
-    color: #6b6b6b;
-    margin: 0 0 1.1em;
+    color: #999999;
+    margin: 0;
   }
-  .def {
-    font-size: clamp(0.8rem, 2vh, 1.05rem);
+  hr {
+    border: none;
+    border-top: 1px solid #dddddd;
+    margin: 32px 0;
+  }
+  p.def {
+    font-size: clamp(12px, 2vh, 14px);
     line-height: 1.6;
-    color: #3a3a3a;
-    margin: 0 0 1.6em;
+    color: #444444;
+    margin: 0 0 32px 0;
   }
-  .join {
-    display: inline-block;
-    font-family: inherit;
-    font-size: clamp(0.75rem, 1.8vh, 0.95rem);
-    letter-spacing: 0.08em;
-    text-transform: lowercase;
-    color: #1a1a1a;
+  a.join {
+    font-size: clamp(12px, 2vh, 14px);
+    color: #2f9e44;
     text-decoration: none;
-    border-bottom: 1px solid #1a1a1a;
-    padding-bottom: 2px;
-    transition: opacity 0.2s ease;
+    border-bottom: 1px solid #2f9e44;
+    padding-bottom: 1px;
   }
-  .join:hover {
-    opacity: 0.55;
+  a.join:hover {
+    opacity: 0.7;
   }
 </style>
 </head>
 <body>
   <div class="card">
-    <p class="name">ARCADIA</p>
+    <h1>ARCADIA</h1>
     <p class="pos">noun</p>
+    <hr>
     <p class="def">a real or imaginary place of rural peace, rustic innocence, and simple quiet pleasure. the term comes from a mountainous region in Greece that became a symbol of an ideal, untroubled life in nature.</p>
-    <a class="join" href="#">join arcadia</a>
+    <a class="join" href="#">join arcadia &raquo;</a>
   </div>
 </body>
 </html>
