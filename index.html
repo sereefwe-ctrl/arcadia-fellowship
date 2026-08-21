@@ -33,12 +33,23 @@
     max-height: 92vh;
     padding: 0 24px;
   }
+  .logo-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin: 0 0 20px 0;
+  }
   img.logo {
     display: block;
     height: clamp(18px, 4.5vh, 32px);
     width: auto;
-    margin: 0 0 20px 0;
     filter: brightness(0) invert(1);
+  }
+  img.icon {
+    display: block;
+    height: clamp(28px, 6vh, 44px);
+    width: auto;
   }
   p.pos {
     font-size: clamp(11px, 1.8vh, 13px);
@@ -72,7 +83,10 @@
 </head>
 <body>
   <div class="card">
-    <img class="logo" src="Arcadia1.png" alt="Arcadia">
+    <div class="logo-row">
+      <img class="logo" src="Arcadia1.png" alt="Arcadia">
+      <img class="icon" src="folder-icon.png" alt="">
+    </div>
     <p class="pos">noun / ar&#8231;ca&#8231;dia</p>
     <hr>
     <p class="def">a real or imaginary place of rural peace, rustic innocence, and simple quiet pleasure. the term comes from a mountainous region in Greece that became a symbol of an ideal, untroubled life in nature.</p>
