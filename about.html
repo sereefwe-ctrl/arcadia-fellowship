@@ -3,9 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Arcadia</title>
+<title>Arcadia — About</title>
 <link rel="icon" type="image/jpeg" href="favicon.jpeg">
 <link rel="apple-touch-icon" href="favicon.jpeg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   html, body {
     margin: 0;
@@ -18,6 +21,11 @@
   }
   body {
     font-family: "IBM Plex Mono", "Courier New", monospace;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    box-sizing: border-box;
+    padding-bottom: 20vh;
     position: relative;
   }
   canvas#water {
@@ -48,6 +56,46 @@
   body.static-bg .scrim {
     display: none;
   }
+  .card {
+    position: relative;
+    z-index: 2;
+    max-width: min(540px, 88vw);
+    max-height: 92vh;
+    padding: 0 24px;
+  }
+  a.back {
+    display: inline-block;
+    font-size: clamp(11px, 1.8vh, 13px);
+    color: rgba(244, 241, 232, 0.65);
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    margin: 0 0 20px 0;
+    transition: color 0.2s ease;
+  }
+  a.back:hover {
+    color: #f4f1e8;
+  }
+  p.pos {
+    font-size: clamp(11px, 1.8vh, 13px);
+    font-style: italic;
+    color: rgba(244, 241, 232, 0.65);
+    margin: 0;
+  }
+  hr {
+    border: none;
+    border-top: 1px solid rgba(244, 241, 232, 0.25);
+    margin: 32px 0;
+  }
+  p.def {
+    font-size: clamp(12px, 2vh, 14px);
+    line-height: 1.6;
+    color: #f4f1e8;
+    margin: 0 0 20px 0;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+  }
+  p.def:last-of-type {
+    margin-bottom: 0;
+  }
   #cursor-dot {
     position: fixed;
     top: 0;
@@ -64,7 +112,8 @@
     will-change: transform;
     transition: transform 0.09s ease-out, opacity 0.2s ease;
   }
-  body.custom-cursor {
+  body.custom-cursor,
+  body.custom-cursor a {
     cursor: none;
   }
 </style>
@@ -72,7 +121,15 @@
 <body>
   <canvas id="water"></canvas>
   <div class="scrim"></div>
+  <div class="card">
+    <a class="back" href="index.html" data-scramble>&lsaquo; arcadia</a>
+    <p class="pos" data-scramble>about / ar&#8231;ca&#8231;dia</p>
+    <hr>
+    <p class="def" data-scramble>Arcadia is not a place you arrive at, but a way of paying attention &mdash; to the people beside you, the work in front of you, and the quiet worth protecting between the two.</p>
+    <p class="def" data-scramble>Arcadians are the ones already here: friends, makers, and the occasionally lost, all leaning toward the same horizon. The archive holds what we have made along the way.</p>
+  </div>
   <div id="cursor-dot"></div>
+  <script src="scramble.js"></script>
   <script src="ripple.js"></script>
   <script>
     (function () {
