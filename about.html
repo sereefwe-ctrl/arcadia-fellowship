@@ -118,6 +118,24 @@
   ul.activities .with {
     color: rgba(244, 241, 232, 0.6);
   }
+  ul.benefits {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    line-height: 1.65;
+  }
+  ul.benefits li {
+    margin-bottom: 14px;
+    color: #f4f1e8;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.45);
+    padding-left: 2ch;
+    text-indent: -2ch;
+  }
+  ul.benefits li::before {
+    content: "\2013\0020";
+    color: rgba(244, 241, 232, 0.4);
+  }
   #cursor-dot {
     position: fixed;
     top: 0;
@@ -169,6 +187,14 @@
       <li><span data-scramble-fast>Felicis private dinner</span> <span class="with" data-scramble-fast>w/ Toby Coker</span></li>
     </ul>
     <hr>
+    <p class="label" data-scramble>&lt; benefits of becoming an arcadian &gt;</p>
+    <ul class="benefits">
+      <li data-scramble>a sponsored retreat to a dedicated country with other Arcadians, happening once a quarter, each time in a different country.</li>
+      <li data-scramble>meet $b+ founders and tier 1 investors from around the world.</li>
+      <li data-scramble>GPUs and credits supported by our sponsors.</li>
+      <li data-scramble>access to our network: investors, mentors, talents, and friends.</li>
+      <li data-scramble>at the end of the day, we want to create a physical and non-physical space for friends. think of it as a group chat with the most talented people on planet Earth.</li>
+    </ul>
   </div>
   <div id="cursor-dot"></div>
   <script src="scramble.js"></script>
