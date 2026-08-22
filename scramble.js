@@ -39,23 +39,37 @@
     }, delay || 0);
   }
 
+  var NORMAL_DURATION = 2600;
+  var NORMAL_STAGGER = 300;
+  var FAST_DURATION = 320;
+  var FAST_CHANGE_INTERVAL = 35;
+
   function init() {
     var targets = document.querySelectorAll("[data-scramble], [data-scramble-fast]");
-    var normalIndex = 0;
-    var fastIndex = 0;
+    if (reducedMotion) return;
+
+    var normalEls = [];
+    var fastEls = [];
     for (var i = 0; i < targets.length; i++) {
       var el = targets[i];
       var finalText = el.textContent;
-      if (reducedMotion) continue;
       el.textContent = finalText.replace(/\S/g, randChar);
       if (el.hasAttribute("data-scramble-fast")) {
-        crackle(el, finalText, 320, 35, fastIndex * 45);
-        fastIndex++;
+        fastEls.push({ el: el, text: finalText });
       } else {
-        crackle(el, finalText, 2600, 50, normalIndex * 300);
-        normalIndex++;
+        normalEls.push({ el: el, text: finalText });
       }
     }
+
+    var normalFinish = normalEls.length > 0 ? (normalEls.length - 1) * NORMAL_STAGGER + NORMAL_DURATION : 0;
+    var fastStagger = fastEls.length > 1 ? Math.max(15, (normalFinish - FAST_DURATION) / (fastEls.length - 1)) : 0;
+
+    normalEls.forEach(function (item, i) {
+      crackle(item.el, item.text, NORMAL_DURATION, 50, i * NORMAL_STAGGER);
+    });
+    fastEls.forEach(function (item, i) {
+      crackle(item.el, item.text, FAST_DURATION, FAST_CHANGE_INTERVAL, i * fastStagger);
+    });
   }
 
   if (document.readyState === "loading") {
