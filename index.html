@@ -159,6 +159,27 @@
     border-color: #39ff14;
     color: #ffffff;
   }
+  #cursor-dot {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: rgba(200, 198, 190, 0.4);
+    filter: blur(1.5px);
+    pointer-events: none;
+    transform: translate(-999px, -999px);
+    transition: transform 0.09s ease-out, opacity 0.2s ease;
+    opacity: 0;
+    z-index: 9999;
+    will-change: transform;
+  }
+  body.custom-cursor,
+  body.custom-cursor a,
+  body.custom-cursor button {
+    cursor: none;
+  }
 </style>
 </head>
 <body>
@@ -180,7 +201,23 @@
     <p class="def" data-scramble>a real or imaginary place of rural peace, rustic innocence, and simple quiet pleasure. the term comes from a mountainous region in Greece that became a symbol of an ideal, untroubled life in nature.</p>
     <a class="become" href="#" data-scramble>become an Arcadian</a>
   </div>
+  <div id="cursor-dot"></div>
   <script src="scramble.js"></script>
   <script src="ripple.js"></script>
+  <script>
+    (function () {
+      if (!window.matchMedia || !window.matchMedia("(pointer: fine)").matches) return;
+      var dot = document.getElementById("cursor-dot");
+      if (!dot) return;
+      document.body.classList.add("custom-cursor");
+      window.addEventListener("mousemove", function (e) {
+        dot.style.opacity = "1";
+        dot.style.transform = "translate(" + (e.clientX - 11) + "px, " + (e.clientY - 11) + "px)";
+      });
+      window.addEventListener("mouseleave", function () {
+        dot.style.opacity = "0";
+      });
+    })();
+  </script>
 </body>
 </html>
