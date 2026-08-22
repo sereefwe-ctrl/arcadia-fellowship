@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Arcadia — About</title>
+<title>Arcadia — Archive</title>
 <link rel="icon" type="image/jpeg" href="favicon.jpeg">
 <link rel="apple-touch-icon" href="favicon.jpeg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -77,26 +77,6 @@
     width: auto;
     margin: 0 0 28px 0;
   }
-  p.def {
-    font-size: 14px;
-    line-height: 1.65;
-    color: #f4f1e8;
-    margin: 0 0 18px 0;
-    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.45);
-  }
-  .goal {
-    font-style: italic;
-  }
-  a.contact-link {
-    color: #f4f1e8;
-    text-decoration: none;
-    border-bottom: 1px solid rgba(244, 241, 232, 0.65);
-    padding-bottom: 1px;
-    transition: opacity 0.2s ease;
-  }
-  a.contact-link:hover {
-    opacity: 0.7;
-  }
   hr {
     border: none;
     border-top: 1px solid rgba(244, 241, 232, 0.25);
@@ -108,23 +88,25 @@
     color: rgba(244, 241, 232, 0.65);
     margin: 0 0 16px 0;
   }
-  ul.benefits {
+  ul.activities {
     list-style: none;
     margin: 0;
     padding: 0;
-    font-size: 14px;
-    line-height: 1.65;
+    font-size: 13px;
+    line-height: 1.7;
   }
-  ul.benefits li {
-    margin-bottom: 14px;
-    color: #f4f1e8;
+  ul.activities li {
+    margin-bottom: 10px;
     text-shadow: 0 1px 6px rgba(0, 0, 0, 0.45);
     padding-left: 2ch;
     text-indent: -2ch;
   }
-  ul.benefits li::before {
+  ul.activities li::before {
     content: "\2013\0020";
     color: rgba(244, 241, 232, 0.4);
+  }
+  ul.activities .with {
+    color: rgba(244, 241, 232, 0.6);
   }
   #cursor-dot {
     position: fixed;
@@ -158,34 +140,19 @@
   <div class="card">
     <a class="back" href="index.html" data-scramble>&lsaquo; back</a>
     <img class="logo" src="Arcadia1-white.png" alt="Arcadia">
-    <p class="label" data-scramble>about arcadia</p>
+    <p class="label" data-scramble>the archive</p>
     <hr>
-    <p class="def" data-scramble>we are a community for researchers &amp; technical founders from academia and industry. we work on research, open-source projects, and real-world applications to build the next leading AI startups.</p>
-    <p class="def"><span data-scramble>we support the next generation leaders with our talents &amp; investor network, mentors, credits &amp; GPUs, and anything else they need along the way.</span> <span class="goal" data-scramble>our goal is to help 10 arcadians to build 10 unicorns by 2030.</span></p>
-    <p class="def" data-scramble>agenda: talks, retreats and dinners with researchers, founders, mentors and investors. all activities are free, sponsored by our supporters, and we don't take equity.</p>
-    <hr>
-    <p class="label" data-scramble>&lt; benefits of becoming an arcadian &gt;</p>
-    <ul class="benefits">
-      <li data-scramble>a sponsored retreat to a dedicated country with other arcadians. happening once a quarter, each time in a different country.</li>
-      <li data-scramble>meet $b+ founders and tier 1 investors from around the world.</li>
-      <li data-scramble>GPUs and credits supported by our sponsors.</li>
-      <li data-scramble>access to our network: investors, mentors, talents, and friends.</li>
-      <li data-scramble>at the end of the day, we want to create a physical and non-physical space for friends. think of it as a group chat with the most talented people on planet Earth.</li>
-    </ul>
-    <hr>
-    <p class="label" data-scramble>&lt; when is the next retreat? &gt;</p>
-    <ul class="benefits">
-      <li data-scramble>we are planning a retreat to Maui Island in Hawaii for Q4 2026.</li>
-    </ul>
-    <hr>
-    <p class="label" data-scramble>&lt; can anyone apply? &gt;</p>
-    <ul class="benefits">
-      <li data-scramble>we are an invite-only community. if you wish to get involved, please reach out to an arcadian.</li>
-    </ul>
-    <hr>
-    <p class="label" data-scramble>&lt; how can I support arcadians? &gt;</p>
-    <ul class="benefits">
-      <li><span data-scramble>if you&rsquo;re interested in supporting arcadians, contact us </span><a class="contact-link" href="#" data-scramble>here</a></li>
+    <p class="label" data-scramble>&lt; past activities &gt;</p>
+    <ul class="activities">
+      <li><span data-scramble>ICML Jeju Island Retreat</span> <span class="with" data-scramble>w/ Khosla, BCV, Ricursive Intelligence, AfterQuery, Sky9 Capital, Abundant</span></li>
+      <li><span data-scramble>ICML afterparty</span> <span class="with" data-scramble>w/ Lightspeed, BCV, Chemistry, Lowercarbon, SevenStars, HRZ</span></li>
+      <li><span data-scramble>ICML Rooftop Party</span> <span class="with" data-scramble>w/ StrikerVC, Ricursive Intelligence, Elorian</span></li>
+      <li><span data-scramble>ICML Lunch</span> <span class="with" data-scramble>w/ Sky9 Capital</span></li>
+      <li><span data-scramble>ICML Yacht Party</span> <span class="with" data-scramble>w/ Mercor</span></li>
+      <li><span data-scramble>ICML coffee &amp; matcha</span> <span class="with" data-scramble>w/ GMI Cloud, Sky9 Capital</span></li>
+      <li><span data-scramble>ICML lunch</span> <span class="with" data-scramble>w/ General Intuition</span></li>
+      <li><span data-scramble>AI Super Night</span> <span class="with" data-scramble>w/ 500 Global, Elorian, Humans&amp;</span></li>
+      <li><span data-scramble>Felicis private dinner</span> <span class="with" data-scramble>w/ Toby Coker</span></li>
     </ul>
   </div>
   <div id="cursor-dot"></div>
