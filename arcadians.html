@@ -73,27 +73,11 @@
   a.back:hover {
     color: #f4f1e8;
   }
-  .logo-row {
-    display: flex;
-    align-items: center;
-    gap: 18px;
-    margin: 0 0 32px 0;
-  }
   img.logo {
     display: block;
     height: 26px;
     width: auto;
-  }
-  img.gate-icon {
-    display: block;
-    height: 64px;
-    width: auto;
-    filter: drop-shadow(0 0 5px rgba(197, 214, 190, 0.5)) drop-shadow(0 0 16px rgba(197, 214, 190, 0.3));
-    animation: float 4.5s ease-in-out infinite;
-  }
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-5px); }
+    margin: 0 0 32px 0;
   }
   p.label {
     font-size: 13px;
@@ -207,10 +191,7 @@
   <div class="scrim"></div>
   <div class="card">
     <a class="back" href="index.html" data-scramble>&lsaquo; back</a>
-    <div class="logo-row">
-      <img class="logo" src="Arcadia1-white.png" alt="Arcadia">
-      <img class="gate-icon" src="celestial-folder-icon.png" alt="">
-    </div>
+    <img class="logo" src="Arcadia1-white.png" alt="Arcadia">
     <p class="label" data-scramble>enter password</p>
     <div class="password-box" id="password-box">
       <svg class="lock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg>
