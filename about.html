@@ -87,6 +87,16 @@
   .goal {
     font-style: italic;
   }
+  a.contact-link {
+    color: #f4f1e8;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(244, 241, 232, 0.65);
+    padding-bottom: 1px;
+    transition: opacity 0.2s ease;
+  }
+  a.contact-link:hover {
+    opacity: 0.7;
+  }
   hr {
     border: none;
     border-top: 1px solid rgba(244, 241, 232, 0.25);
@@ -204,6 +214,11 @@
     <p class="label" data-scramble>&lt; can anyone apply? &gt;</p>
     <ul class="benefits">
       <li data-scramble>we are an invite-only community. if you wish to get involved, please reach out to an arcadian.</li>
+    </ul>
+    <hr>
+    <p class="label" data-scramble>&lt; how can I support arcadians? &gt;</p>
+    <ul class="benefits">
+      <li><span data-scramble>if you&rsquo;re interested in supporting arcadians, contact us </span><a class="contact-link" href="#" data-scramble>here</a></li>
     </ul>
   </div>
   <div id="cursor-dot"></div>
