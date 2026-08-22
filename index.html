@@ -73,19 +73,24 @@
     height: 100%;
     width: auto;
   }
+  .icon-row {
+    display: flex;
+    gap: 16px;
+    margin-top: 0;
+  }
   .icon-wrap {
     display: block;
-    margin-top: 0;
-    height: clamp(120px, 28vh, 240px);
-    width: fit-content;
+    flex: 1 1 0;
+    aspect-ratio: 736 / 1104;
   }
   img.icon {
     display: block;
+    width: 100%;
     height: 100%;
-    width: auto;
+    object-fit: contain;
   }
   @media (max-width: 640px) {
-    .icon-wrap {
+    .icon-row {
       display: none;
     }
   }
@@ -192,9 +197,17 @@
     <p class="pos" data-scramble>noun / ar&#8231;ca&#8231;dia</p>
     <hr>
     <p class="def" data-scramble>a real or imaginary place of rural peace, rustic innocence, and simple quiet pleasure. the term comes from a mountainous region in Greece that became a symbol of an ideal, untroubled life in nature.</p>
-    <a class="icon-wrap" href="about.html" id="icon-link" aria-label="About us">
-      <img class="icon" src="folder-icon.png" alt="">
-    </a>
+    <div class="icon-row">
+      <a class="icon-wrap about-link" href="about.html" aria-label="About us">
+        <img class="icon" src="folder-icon.png" alt="">
+      </a>
+      <a class="icon-wrap about-link" href="about.html" aria-label="About us">
+        <img class="icon" src="folder-icon.png" alt="">
+      </a>
+      <a class="icon-wrap about-link" href="about.html" aria-label="About us">
+        <img class="icon" src="folder-icon.png" alt="">
+      </a>
+    </div>
   </div>
   <div id="cursor-dot">
     <span class="cursor-label">
@@ -218,15 +231,15 @@
         dot.style.opacity = "0";
       });
 
-      var iconLink = document.getElementById("icon-link");
-      if (iconLink) {
-        iconLink.addEventListener("mouseenter", function () {
+      var aboutLinks = document.querySelectorAll(".about-link");
+      aboutLinks.forEach(function (link) {
+        link.addEventListener("mouseenter", function () {
           dot.classList.add("active");
         });
-        iconLink.addEventListener("mouseleave", function () {
+        link.addEventListener("mouseleave", function () {
           dot.classList.remove("active");
         });
-      }
+      });
     })();
   </script>
 </body>
