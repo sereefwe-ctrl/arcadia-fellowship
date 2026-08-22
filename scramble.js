@@ -47,7 +47,7 @@
       var el = targets[i];
       var finalText = el.textContent;
       el.textContent = finalText.replace(/\S/g, randChar);
-      crackle(el, finalText, 2600, 50, i * 300);
+      crackle(el, finalText, 700, 30, i * 70);
     }
   }
 
