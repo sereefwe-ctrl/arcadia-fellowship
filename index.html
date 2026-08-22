@@ -199,20 +199,20 @@
     <hr>
     <p class="def" data-scramble>a real or imaginary place of rural peace, rustic innocence, and simple quiet pleasure. the term comes from a mountainous region in Greece that became a symbol of an ideal, untroubled life in nature.</p>
     <div class="icon-row">
-      <a class="icon-wrap about-link" href="about.html" aria-label="About us">
+      <a class="icon-wrap about-link" href="about.html" aria-label="About us" data-cursor-label="about us">
         <img class="icon" src="folder-icon.png" alt="">
       </a>
-      <a class="icon-wrap about-link" href="about.html" aria-label="About us">
+      <a class="icon-wrap about-link" href="about.html" aria-label="Arcadians" data-cursor-label="arcadians">
         <img class="icon" src="celestial-folder-icon.png" alt="">
       </a>
-      <a class="icon-wrap about-link" href="about.html" aria-label="About us">
+      <a class="icon-wrap about-link" href="about.html" aria-label="Gallery" data-cursor-label="gallery">
         <img class="icon" src="cottagecore-folder-icon-retro.png" alt="">
       </a>
     </div>
   </div>
   <div id="cursor-dot">
     <span class="cursor-label">
-      about us
+      <span class="cursor-label-text">about us</span>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
     </span>
   </div>
@@ -232,9 +232,11 @@
         dot.style.opacity = "0";
       });
 
+      var labelText = document.querySelector(".cursor-label-text");
       var aboutLinks = document.querySelectorAll(".about-link");
       aboutLinks.forEach(function (link) {
         link.addEventListener("mouseenter", function () {
+          if (labelText) labelText.textContent = link.dataset.cursorLabel || "about us";
           dot.classList.add("active");
         });
         link.addEventListener("mouseleave", function () {
