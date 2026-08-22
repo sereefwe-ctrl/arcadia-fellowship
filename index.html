@@ -211,7 +211,7 @@
       <a class="icon-wrap about-link" href="about.html" aria-label="Arcadians" data-cursor-label="arcadians" data-cursor-bg="rgba(26, 42, 30, 0.75)" data-cursor-border="rgba(197, 214, 190, 0.28)">
         <img class="icon" src="celestial-folder-icon.png" alt="">
       </a>
-      <a class="icon-wrap about-link" href="about.html" aria-label="Gallery" data-cursor-label="gallery" data-cursor-bg="rgba(56, 32, 30, 0.75)" data-cursor-border="rgba(224, 190, 180, 0.28)">
+      <a class="icon-wrap about-link" href="about.html" aria-label="Archive" data-cursor-label="archive" data-cursor-bg="rgba(56, 32, 30, 0.75)" data-cursor-border="rgba(224, 190, 180, 0.28)">
         <img class="icon" src="cottagecore-folder-icon-retro.png" alt="">
       </a>
     </div>
@@ -238,11 +238,36 @@
         dot.style.opacity = "0";
       });
 
+      var CRACKLE_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789#%&*+=-/\\<>";
+      function crackleLabel(el, finalText, duration, changeInterval) {
+        if (el._crackleFrame) cancelAnimationFrame(el._crackleFrame);
+        var startTime = null;
+        var lastChange = -Infinity;
+        function frame(now) {
+          if (startTime === null) startTime = now;
+          var elapsed = now - startTime;
+          if (elapsed >= duration) {
+            el.textContent = finalText;
+            return;
+          }
+          if (now - lastChange >= changeInterval) {
+            lastChange = now;
+            var out = "";
+            for (var i = 0; i < finalText.length; i++) {
+              out += finalText[i] === " " ? " " : CRACKLE_CHARS[(Math.random() * CRACKLE_CHARS.length) | 0];
+            }
+            el.textContent = out;
+          }
+          el._crackleFrame = requestAnimationFrame(frame);
+        }
+        el._crackleFrame = requestAnimationFrame(frame);
+      }
+
       var labelText = document.querySelector(".cursor-label-text");
       var aboutLinks = document.querySelectorAll(".about-link");
       aboutLinks.forEach(function (link) {
         link.addEventListener("mouseenter", function () {
-          if (labelText) labelText.textContent = link.dataset.cursorLabel || "about us";
+          if (labelText) crackleLabel(labelText, link.dataset.cursorLabel || "about us", 260, 30);
           dot.style.background = link.dataset.cursorBg || "";
           dot.style.borderColor = link.dataset.cursorBorder || "";
           dot.classList.add("active");
