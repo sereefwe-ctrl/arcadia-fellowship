@@ -73,61 +73,92 @@
   a.back:hover {
     color: #f4f1e8;
   }
+  .logo-row {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin: 0 0 32px 0;
+  }
   img.logo {
     display: block;
     height: 26px;
     width: auto;
-    margin: 0 0 28px 0;
+  }
+  img.gate-icon {
+    display: block;
+    height: 64px;
+    width: auto;
+    filter: drop-shadow(0 0 5px rgba(197, 214, 190, 0.5)) drop-shadow(0 0 16px rgba(197, 214, 190, 0.3));
+    animation: float 4.5s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
   }
   p.label {
     font-size: 13px;
     font-style: italic;
     color: rgba(244, 241, 232, 0.65);
-    margin: 0;
+    margin: 0 0 18px 0;
   }
   .password-box {
     display: flex;
     align-items: center;
-    gap: 10px;
-    border-bottom: 1px solid rgba(244, 241, 232, 0.35);
-    padding-bottom: 8px;
-    transition: border-color 0.2s ease;
+    gap: 12px;
+    background: rgba(26, 42, 30, 0.55);
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    border: 1px solid rgba(197, 214, 190, 0.28);
+    border-radius: 999px;
+    padding: 13px 18px;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
   }
   .password-box:focus-within {
-    border-color: rgba(244, 241, 232, 0.75);
+    border-color: rgba(197, 214, 190, 0.65);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35), 0 0 22px rgba(197, 214, 190, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.08);
   }
   .password-box.shake {
     animation: shake 0.32s ease;
     border-color: rgba(255, 120, 100, 0.7);
   }
+  .lock-icon {
+    flex: 0 0 auto;
+    width: 14px;
+    height: 14px;
+    color: rgba(244, 241, 232, 0.55);
+  }
   #password-input {
     flex: 1 1 auto;
+    min-width: 0;
     background: transparent;
     border: none;
     outline: none;
     font-family: inherit;
     font-size: 13px;
-    font-style: italic;
-    letter-spacing: 0.03em;
+    letter-spacing: 0.05em;
     color: #f4f1e8;
     padding: 0;
   }
   #password-input::placeholder {
     color: rgba(244, 241, 232, 0.4);
     font-style: italic;
+    letter-spacing: 0.03em;
   }
   #password-submit {
+    flex: 0 0 auto;
     background: none;
     border: none;
     padding: 0;
-    color: rgba(244, 241, 232, 0.65);
+    color: rgba(244, 241, 232, 0.7);
     cursor: pointer;
     display: flex;
     align-items: center;
-    transition: color 0.2s ease;
+    transition: color 0.2s ease, transform 0.2s ease;
   }
   #password-submit:hover {
     color: #f4f1e8;
+    transform: translate(1px, -1px);
   }
   #password-submit svg {
     width: 14px;
@@ -143,7 +174,7 @@
   hr {
     border: none;
     border-top: 1px solid rgba(244, 241, 232, 0.25);
-    margin: 24px 0 0;
+    margin: 28px 0 0;
   }
   #cursor-dot {
     position: fixed;
@@ -176,8 +207,13 @@
   <div class="scrim"></div>
   <div class="card">
     <a class="back" href="index.html" data-scramble>&lsaquo; back</a>
-    <img class="logo" src="Arcadia1-white.png" alt="Arcadia">
+    <div class="logo-row">
+      <img class="logo" src="Arcadia1-white.png" alt="Arcadia">
+      <img class="gate-icon" src="celestial-folder-icon.png" alt="">
+    </div>
+    <p class="label" data-scramble>you must be one to enter</p>
     <div class="password-box" id="password-box">
+      <svg class="lock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg>
       <input type="password" id="password-input" placeholder="password" autocomplete="off" spellcheck="false">
       <button type="button" id="password-submit" aria-label="submit">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
