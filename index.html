@@ -82,42 +82,6 @@
     height: 100%;
     width: auto;
   }
-  .icon-tooltip {
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    margin-bottom: 14px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    padding: 9px 16px;
-    border-radius: 999px;
-    background: rgba(18, 20, 14, 0.55);
-    backdrop-filter: blur(14px) saturate(140%);
-    -webkit-backdrop-filter: blur(14px) saturate(140%);
-    border: 1px solid rgba(244, 241, 232, 0.22);
-    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.08);
-    color: #f4f1e8;
-    font-family: inherit;
-    font-size: 13px;
-    letter-spacing: 0.02em;
-    text-decoration: none;
-    white-space: nowrap;
-    opacity: 0;
-    pointer-events: none;
-    transform: translateX(-50%) translateY(6px) scale(0.96);
-    transition: opacity 0.22s ease, transform 0.22s ease;
-    z-index: 5;
-  }
-  .icon-tooltip svg {
-    width: 12px;
-    height: 12px;
-  }
-  .icon-wrap:hover .icon-tooltip {
-    opacity: 1;
-    pointer-events: auto;
-    transform: translateX(-50%) translateY(0) scale(1);
-  }
   @media (max-width: 640px) {
     .icon-wrap {
       display: none;
@@ -169,11 +133,63 @@
     background: rgba(200, 198, 190, 0.4);
     filter: blur(1.5px);
     pointer-events: none;
-    transform: translate(-999px, -999px);
-    transition: transform 0.09s ease-out, opacity 0.2s ease;
+    transform: translate(-999px, -999px) translate(-50%, -50%);
     opacity: 0;
     z-index: 9999;
     will-change: transform;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 0;
+    box-sizing: border-box;
+    border: 1px solid transparent;
+    transition:
+      transform 0.09s ease-out,
+      opacity 0.2s ease,
+      width 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+      height 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+      border-radius 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+      background-color 0.32s ease,
+      filter 0.32s ease,
+      padding 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.32s ease,
+      border-color 0.32s ease;
+  }
+  #cursor-dot.active {
+    width: 128px;
+    height: 40px;
+    border-radius: 999px;
+    background: rgba(18, 20, 14, 0.72);
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    border: 1px solid rgba(244, 241, 232, 0.22);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    filter: none;
+    padding: 0 16px;
+  }
+  #cursor-dot .cursor-label {
+    color: #f4f1e8;
+    font-family: "IBM Plex Mono", "Courier New", monospace;
+    font-size: 13px;
+    letter-spacing: 0.02em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    opacity: 0;
+    transform: scale(0.85);
+    transition: opacity 0.18s ease, transform 0.18s ease;
+  }
+  #cursor-dot.active .cursor-label {
+    opacity: 1;
+    transform: scale(1);
+    transition-delay: 0.12s;
+  }
+  #cursor-dot .cursor-label svg {
+    width: 12px;
+    height: 12px;
+    flex-shrink: 0;
   }
   body.custom-cursor,
   body.custom-cursor a,
@@ -188,20 +204,21 @@
   <div class="card">
     <div class="logo-row">
       <img class="logo" src="Arcadia1-white.png" alt="Arcadia">
-      <div class="icon-wrap">
+      <a class="icon-wrap" href="#" id="icon-link" aria-label="About us">
         <img class="icon" src="folder-icon.png" alt="">
-        <a class="icon-tooltip" href="#">
-          about us
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-        </a>
-      </div>
+      </a>
     </div>
     <p class="pos" data-scramble>noun / ar&#8231;ca&#8231;dia</p>
     <hr>
     <p class="def" data-scramble>a real or imaginary place of rural peace, rustic innocence, and simple quiet pleasure. the term comes from a mountainous region in Greece that became a symbol of an ideal, untroubled life in nature.</p>
     <a class="become" href="#" data-scramble>become an Arcadian</a>
   </div>
-  <div id="cursor-dot"></div>
+  <div id="cursor-dot">
+    <span class="cursor-label">
+      about us
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+    </span>
+  </div>
   <script src="scramble.js"></script>
   <script src="ripple.js"></script>
   <script>
@@ -212,11 +229,21 @@
       document.body.classList.add("custom-cursor");
       window.addEventListener("mousemove", function (e) {
         dot.style.opacity = "1";
-        dot.style.transform = "translate(" + (e.clientX - 11) + "px, " + (e.clientY - 11) + "px)";
+        dot.style.transform = "translate(" + e.clientX + "px, " + e.clientY + "px) translate(-50%, -50%)";
       });
       window.addEventListener("mouseleave", function () {
         dot.style.opacity = "0";
       });
+
+      var iconLink = document.getElementById("icon-link");
+      if (iconLink) {
+        iconLink.addEventListener("mouseenter", function () {
+          dot.classList.add("active");
+        });
+        iconLink.addEventListener("mouseleave", function () {
+          dot.classList.remove("active");
+        });
+      }
     })();
   </script>
 </body>
