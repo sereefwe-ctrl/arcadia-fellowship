@@ -40,13 +40,21 @@
   }
 
   function init() {
-    var targets = document.querySelectorAll("[data-scramble]");
+    var targets = document.querySelectorAll("[data-scramble], [data-scramble-fast]");
+    var normalIndex = 0;
+    var fastIndex = 0;
     for (var i = 0; i < targets.length; i++) {
       var el = targets[i];
       var finalText = el.textContent;
       if (reducedMotion) continue;
       el.textContent = finalText.replace(/\S/g, randChar);
-      crackle(el, finalText, 2600, 50, i * 300);
+      if (el.hasAttribute("data-scramble-fast")) {
+        crackle(el, finalText, 320, 35, fastIndex * 45);
+        fastIndex++;
+      } else {
+        crackle(el, finalText, 2600, 50, normalIndex * 300);
+        normalIndex++;
+      }
     }
   }
 

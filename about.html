@@ -14,19 +14,15 @@
     margin: 0;
     padding: 0;
     width: 100%;
-    height: 100%;
-    overflow: hidden;
+    min-height: 100%;
     background: #0d0f08;
     color: #f4f1e8;
   }
   body {
     font-family: "IBM Plex Mono", "Courier New", monospace;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
     box-sizing: border-box;
-    padding-bottom: 32vh;
     position: relative;
+    padding: 12vh 24px 10vh;
   }
   canvas#water {
     position: fixed;
@@ -40,7 +36,7 @@
   .scrim {
     position: fixed;
     inset: 0;
-    background: linear-gradient(rgba(8, 10, 4, 0.45), rgba(8, 10, 4, 0.55));
+    background: linear-gradient(rgba(8, 10, 4, 0.5), rgba(8, 10, 4, 0.62));
     pointer-events: none;
     z-index: 1;
   }
@@ -48,9 +44,10 @@
     display: none;
   }
   body.static-bg {
-    background-image: linear-gradient(rgba(8, 10, 4, 0.45), rgba(8, 10, 4, 0.55)), url("garden.jpg");
+    background-image: linear-gradient(rgba(8, 10, 4, 0.5), rgba(8, 10, 4, 0.62)), url("garden.jpg");
     background-size: cover;
     background-position: center;
+    background-attachment: fixed;
     background-repeat: no-repeat;
   }
   body.static-bg .scrim {
@@ -59,42 +56,62 @@
   .card {
     position: relative;
     z-index: 2;
-    max-width: min(540px, 88vw);
-    max-height: 92vh;
-    padding: 0 24px;
+    max-width: 540px;
+    margin: 0 auto;
   }
   a.back {
     display: inline-block;
-    font-size: clamp(11px, 1.8vh, 13px);
+    font-size: 13px;
     color: rgba(244, 241, 232, 0.65);
     text-decoration: none;
     letter-spacing: 0.03em;
-    margin: 0 0 20px 0;
+    margin: 0 0 28px 0;
     transition: color 0.2s ease;
   }
   a.back:hover {
     color: #f4f1e8;
   }
-  p.pos {
-    font-size: clamp(11px, 1.8vh, 13px);
-    font-style: italic;
-    color: rgba(244, 241, 232, 0.65);
-    margin: 0;
+  img.logo {
+    display: block;
+    height: 26px;
+    width: auto;
+    margin: 0 0 28px 0;
+  }
+  p.def {
+    font-size: 14px;
+    line-height: 1.65;
+    color: #f4f1e8;
+    margin: 0 0 18px 0;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.45);
   }
   hr {
     border: none;
     border-top: 1px solid rgba(244, 241, 232, 0.25);
-    margin: 32px 0;
+    margin: 32px 0 24px;
   }
-  p.def {
-    font-size: clamp(12px, 2vh, 14px);
-    line-height: 1.6;
-    color: #f4f1e8;
-    margin: 0 0 20px 0;
-    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+  p.label {
+    font-size: 13px;
+    font-style: italic;
+    color: rgba(244, 241, 232, 0.65);
+    margin: 0 0 16px 0;
   }
-  p.def:last-of-type {
-    margin-bottom: 0;
+  ul.activities {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 13px;
+    line-height: 1.7;
+  }
+  ul.activities li {
+    margin-bottom: 10px;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.45);
+  }
+  ul.activities li::before {
+    content: "\2013\0020";
+    color: rgba(244, 241, 232, 0.4);
+  }
+  ul.activities .with {
+    color: rgba(244, 241, 232, 0.6);
   }
   #cursor-dot {
     position: fixed;
@@ -123,10 +140,23 @@
   <div class="scrim"></div>
   <div class="card">
     <a class="back" href="index.html" data-scramble>&lsaquo; arcadia</a>
-    <p class="pos" data-scramble>about / ar&#8231;ca&#8231;dia</p>
+    <img class="logo" src="Arcadia1-white.png" alt="Arcadia">
+    <p class="def" data-scramble>we are a community for researchers &amp; technical founders from academia and industry. we work on research, open-source projects, and real-world applications to build the next leading AI startups.</p>
+    <p class="def" data-scramble>we support the next generation leaders with our talents &amp; investor network, mentors, credits &amp; GPUs, and anything else they need along the way.</p>
+    <p class="def" data-scramble>agenda: talks, retreats and dinners with researchers, founders, mentors and investors. all activities are free, sponsored by our supporters, and we don't take equity.</p>
     <hr>
-    <p class="def" data-scramble>Arcadia is not a place you arrive at, but a way of paying attention &mdash; to the people beside you, the work in front of you, and the quiet worth protecting between the two.</p>
-    <p class="def" data-scramble>Arcadians are the ones already here: friends, makers, and the occasionally lost, all leaning toward the same horizon. The archive holds what we have made along the way.</p>
+    <p class="label" data-scramble-fast>past activities</p>
+    <ul class="activities">
+      <li><span data-scramble-fast>ICML Jeju Island Retreat</span> <span class="with" data-scramble-fast>w/ Khosla, BCV, Ricursive Intelligence, AfterQuery, Sky9 Capital, Abundant</span></li>
+      <li><span data-scramble-fast>ICML afterparty</span> <span class="with" data-scramble-fast>w/ Lightspeed, BCV, Chemistry, Lowercarbon, SevenStars, HRZ</span></li>
+      <li><span data-scramble-fast>ICML Rooftop Party</span> <span class="with" data-scramble-fast>w/ StrikerVC, Ricursive Intelligence, Elorian</span></li>
+      <li><span data-scramble-fast>ICML Lunch</span> <span class="with" data-scramble-fast>w/ Sky9 Capital</span></li>
+      <li><span data-scramble-fast>ICML Yacht Party</span> <span class="with" data-scramble-fast>w/ Mercor</span></li>
+      <li><span data-scramble-fast>ICML coffee &amp; matcha</span> <span class="with" data-scramble-fast>w/ GMI Cloud, Sky9 Capital</span></li>
+      <li><span data-scramble-fast>ICML lunch</span> <span class="with" data-scramble-fast>w/ General Intuition</span></li>
+      <li><span data-scramble-fast>AI Super Night</span> <span class="with" data-scramble-fast>w/ 500 Global, Elorian, Humans&amp;</span></li>
+      <li><span data-scramble-fast>Felicis private dinner</span> <span class="with" data-scramble-fast>w/ Toby Coker</span></li>
+    </ul>
   </div>
   <div id="cursor-dot"></div>
   <script src="scramble.js"></script>
