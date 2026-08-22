@@ -73,11 +73,11 @@
     width: auto;
   }
   .icon-wrap {
-    position: absolute;
-    right: 24px;
-    top: 50%;
-    transform: translateY(-50%);
+    position: fixed;
+    left: 24px;
+    bottom: 24px;
     height: clamp(90px, 20vh, 180px);
+    z-index: 3;
   }
   img.icon {
     display: block;
@@ -188,14 +188,14 @@
   <div class="card">
     <div class="logo-row">
       <img class="logo" src="Arcadia1-white.png" alt="Arcadia">
-      <a class="icon-wrap" href="about.html" id="icon-link" aria-label="About us">
-        <img class="icon" src="folder-icon.png" alt="">
-      </a>
     </div>
     <p class="pos" data-scramble>noun / ar&#8231;ca&#8231;dia</p>
     <hr>
     <p class="def" data-scramble>a real or imaginary place of rural peace, rustic innocence, and simple quiet pleasure. the term comes from a mountainous region in Greece that became a symbol of an ideal, untroubled life in nature.</p>
   </div>
+  <a class="icon-wrap" href="about.html" id="icon-link" aria-label="About us">
+    <img class="icon" src="folder-icon.png" alt="">
+  </a>
   <div id="cursor-dot">
     <span class="cursor-label">
       about us
