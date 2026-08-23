@@ -47,7 +47,8 @@
       var el = targets[i];
       var finalText = el.textContent;
       el.textContent = finalText.replace(/\S/g, randChar);
-      crackle(el, finalText, 700, 30, i * 70);
+      var duration = el.hasAttribute("data-scramble-duration") ? parseInt(el.getAttribute("data-scramble-duration"), 10) : 700;
+      crackle(el, finalText, duration, 30, i * 70);
     }
   }
 
