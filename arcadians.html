@@ -185,7 +185,7 @@
   <canvas id="water"></canvas>
   <div class="scrim"></div>
   <div class="card">
-    <a class="back" href="index.html" data-scramble>&lsaquo; back</a>
+    <a class="back" href="/" data-scramble>&lsaquo; back</a>
     <img class="logo" src="Arcadia1-white.png" alt="Arcadia">
     <p class="label" data-scramble>enter password</p>
     <div class="password-box" id="password-box">
@@ -224,7 +224,7 @@
 
       function tryUnlock() {
         if (CORRECT_PASSWORD !== null && input.value === CORRECT_PASSWORD) {
-          window.location.href = "index.html";
+          window.location.href = "/";
           return;
         }
         box.classList.remove("shake");
